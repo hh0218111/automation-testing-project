@@ -1,0 +1,15 @@
+- button_id: button1
+  dialog_type: alert
+  expected_msg: "I am an alert box!"
+
+- button_id: button4
+  dialog_type: confirm
+  action: accept
+  expected_msg: "Press a button!"
+  expected_result: "OK"
+
+- button_id: button4
+  dialog_type: confirm
+  action: dismiss
+  expected_msg: "Press a button!"
+  expected_result: "Cancel"

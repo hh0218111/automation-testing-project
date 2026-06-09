@@ -1,0 +1,19 @@
+{
+    "editor.inlineSuggest.enabled": false,
+    "[python]": {
+        "editor.quickSuggestions": {
+            "other": true,
+            "comments": false,
+            "strings": false
+        },
+        "editor.suggestOnTriggerCharacters": true,
+        "editor.wordBasedSuggestions": "currentDocument"
+    },
+    "python.REPL.enableREPLSmartSend": false,
+    "cSpell.words": [
+        "funcargs",
+        "hookwrapper",
+        "makereport",
+        "tryfirst"
+    ]
+}

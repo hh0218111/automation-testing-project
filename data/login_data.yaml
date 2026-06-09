@@ -1,0 +1,7 @@
+- username: webdriver
+  password: webdriver123
+  expected: success
+
+- username: wrong
+  password: wrong
+  expected: fail

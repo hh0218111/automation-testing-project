@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head><meta charset="UTF-8"><title>API Mock 练习</title></head>
+<body>
+  <h1>商品信息</h1>
+  <button id="load-btn">加载商品</button>
+  <div id="result"></div>
+  <script>
+    document.getElementById("load-btn").addEventListener("click", async () => {
+      try {
+        const res = await fetch("/api/product");
+        const data = await res.json();
+        document.getElementById("result").innerHTML =
+          `<p>名称: ${data.name}</p><p>价格: ¥${data.price}</p>`;
+      } catch (e) {
+        document.getElementById("result").textContent = "加载失败：" + e.message;
+      }
+    });
+  </script>
+</body>
+</html>

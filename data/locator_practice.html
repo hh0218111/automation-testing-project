@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <title>元素定位练习场</title>
+    <style>
+        body { font-family: Arial, sans-serif; max-width: 700px; margin: 20px auto; padding: 20px; }
+        h1 { color: #333; border-bottom: 2px solid #4A90D9; padding-bottom: 10px; }
+        h2 { color: #555; margin-top: 30px; }
+        .section { background: #f5f7fa; padding: 15px; margin: 15px 0; border-radius: 8px; border-left: 4px solid #4A90D9; }
+        input, button, select, textarea { padding: 8px; margin: 5px; font-size: 14px; }
+        button { cursor: pointer; }
+        .btn-primary { background: #4A90D9; color: white; border: none; border-radius: 4px; }
+        .btn-danger { background: #e74c3c; color: white; border: none; border-radius: 4px; }
+        .btn-success { background: #27ae60; color: white; border: none; border-radius: 4px; }
+        .result-box { padding: 10px; margin: 10px 0; border: 1px dashed #ccc; min-height: 30px; }
+        label { display: inline-block; width: 80px; font-weight: bold; }
+        a { color: #4A90D9; }
+        table { border-collapse: collapse; width: 100%; }
+        table td, table th { border: 1px solid #ddd; padding: 8px; text-align: left; }
+        table th { background: #4A90D9; color: white; }
+        .hidden { display: none; }
+        .card { border: 1px solid #ddd; border-radius: 6px; padding: 12px; margin: 8px 0; }
+    </style>
+</head>
+<body>
+
+    <h1 id="main-title">元素定位练习场</h1>
+    <p class="description">这个页面包含各种 HTML 元素，用来练习 Playwright 元素定位。</p>
+
+    <!-- ===== 区域1：文本输入类 ===== -->
+    <div class="section" id="input-area">
+        <h2>📝 区域1：输入类元素</h2>
+
+        <label for="username">用户名：</label>
+        <input type="text" id="username" name="user" placeholder="请输入用户名" value="">
+
+        <br>
+
+        <label for="password">密码：</label>
+        <input type="password" id="password" name="pass" placeholder="请输入密码">
+
+        <br>
+
+        <label for="email">邮箱：</label>
+        <input type="email" id="email" name="email_addr" placeholder="example@mail.com" data-role="contact">
+
+        <br>
+
+        <label>搜索：</label>
+        <input type="text" class="search-box" placeholder="搜索..." aria-label="全局搜索">
+
+        <br>
+
+        <label for="bio">简介：</label>
+        <textarea id="bio" name="bio_text" rows="3" cols="40" placeholder="写点自我介绍..."></textarea>
+    </div>
+
+    <!-- ===== 区域2：按钮类 ===== -->
+    <div class="section" id="button-area">
+        <h2>🔘 区域2：按钮类元素</h2>
+
+        <button id="login-btn" class="btn-primary" name="action" value="login">登 录</button>
+        <button id="reset-btn" class="btn-danger">重 置</button>
+        <button class="btn-success" data-action="save">保 存</button>
+        <button>取消</button>
+
+        <br><br>
+
+        <span class="result-box" id="button-result">点击按钮后这里会显示结果</span>
+    </div>
+
+    <!-- ===== 区域3：下拉选择 ===== -->
+    <div class="section" id="select-area">
+        <h2>📋 区域3：下拉选择</h2>
+
+        <label for="city">城市：</label>
+        <select id="city" name="location">
+            <option value="">-- 请选择 --</option>
+            <option value="wuhan">武汉</option>
+            <option value="shenzhen">深圳</option>
+            <option value="chengdu">成都</option>
+            <option value="beijing">北京</option>
+        </select>
+
+        <br><br>
+
+        <label>技能（多选）：</label>
+        <select multiple size="4">
+            <option value="python">Python</option>
+            <option value="playwright">Playwright</option>
+            <option value="pytest">pytest</option>
+            <option value="sql">SQL</option>
+        </select>
+    </div>
+
+    <!-- ===== 区域4：复选框和单选框 ===== -->
+    <div class="section" id="checkbox-area">
+        <h2>☑️ 区域4：勾选类</h2>
+
+        <label>爱好：</label>
+        <input type="checkbox" id="hobby-code" name="hobby" value="coding"> 编程
+        <input type="checkbox" id="hobby-game" name="hobby" value="gaming"> 游戏
+        <input type="checkbox" id="hobby-sport" name="hobby" value="sport"> 运动
+
+        <br><br>
+
+        <label>性别：</label>
+        <input type="radio" name="gender" value="male" id="gender-male"> 男
+        <input type="radio" name="gender" value="female" id="gender-female"> 女
+    </div>
+
+    <!-- ===== 区域5：链接 ===== -->
+    <div class="section" id="link-area">
+        <h2>🔗 区域5：链接</h2>
+        <a href="https://www.baidu.com" id="baidu-link">百度一下</a> |
+        <a href="https://www.bing.com" class="search-link">必应搜索</a> |
+        <a href="javascript:void(0)" onclick="alert('点击了测试链接')">测试链接（JavaScript）</a>
+    </div>
+
+    <!-- ===== 区域6：表格 ===== -->
+    <div class="section" id="table-area">
+        <h2>📊 区域6：表格数据</h2>
+        <table id="score-table">
+            <thead>
+                <tr>
+                    <th>姓名</th>
+                    <th>科目</th>
+                    <th>分数</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>张三</td>
+                    <td>Python</td>
+                    <td class="score">95</td>
+                </tr>
+                <tr>
+                    <td>李四</td>
+                    <td>Python</td>
+                    <td class="score">82</td>
+                </tr>
+                <tr>
+                    <td>王五</td>
+                    <td>Java</td>
+                    <td class="score">78</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <!-- ===== 区域7：卡片列表 ===== -->
+    <div class="section" id="card-area">
+        <h2>🃏 区域7：卡片列表</h2>
+        <div class="card" data-id="1">
+            <strong>公告：</strong>今天下午3点开会
+        </div>
+        <div class="card" data-id="2">
+            <strong>提醒：</strong>明天交实验报告
+        </div>
+        <div class="card" data-id="3">
+            <strong>通知：</strong>周五聚餐
+        </div>
+    </div>
+
+    <!-- ===== 区域8：隐藏/动态元素 ===== -->
+    <div class="section" id="dynamic-area">
+        <h2>👻 区域8：隐藏 / 动态出现</h2>
+        <button id="show-msg-btn" onclick="document.getElementById('dynamic-msg').classList.toggle('hidden')">
+            显示/隐藏消息
+        </button>
+        <div id="dynamic-msg" class="hidden card" style="background:#fff3cd;">
+            🎉 这条消息是动态显示/隐藏的！
+        </div>
+    </div>
+
+    <hr>
+    <footer>
+        <p data-testid="footer-text">页面底部 — 用于练习定位</p>
+    </footer>
+
+    <script>
+        // 按钮点击事件
+        document.getElementById('login-btn').addEventListener('click', () => {
+            document.getElementById('button-result').textContent = '✅ 登录按钮被点击了';
+        });
+        document.getElementById('reset-btn').addEventListener('click', () => {
+            document.getElementById('button-result').textContent = '🔄 重置按钮被点击了';
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,14 @@
+- first: 张
+  last: 三
+  email: zhangsan@test.com
+  message: 测试留言1
+
+- first: 李
+  last: 四
+  email: lisi@test.com
+  message: 测试留言2
+
+- first: 王
+  last: 五
+  email: wangwu@test.com
+  message: 测试留言3

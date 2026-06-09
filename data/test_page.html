@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <title>Playwright 练习页面</title>
+    <style>
+        body { font-family: Arial; max-width: 600px; margin: 50px auto; padding: 20px; }
+        input, button { padding: 10px; margin: 5px 0; font-size: 16px; }
+        #result { margin-top: 20px; padding: 15px; background: #f0f0f0; border-radius: 5px; }
+        .success { color: green; font-weight: bold; }
+    </style>
+</head>
+<body>
+    <h1>Playwright 自动化测试练习</h1>
+
+    <h2>登录表单</h2>
+    <form id="loginForm">
+        <label for="username">用户名：</label><br>
+        <input type="text" id="username" name="username" placeholder="请输入用户名"><br><br>
+
+        <label for="password">密码：</label><br>
+        <input type="password" id="password" name="password" placeholder="请输入密码"><br><br>
+
+        <button type="submit" id="loginBtn">登录</button>
+    </form>
+
+    <div id="result"></div>
+
+    <h2>其他元素</h2>
+    <button id="clickMe">点我一下</button>
+    <a href="https://cn.bing.com" id="linkBing">去必应搜索</a>
+
+    <h2>下拉框（城市选择）</h2>
+    <label>城市：
+        <select id="city">
+            <option value="wuhan">武汉</option>
+            <option value="shenzhen">深圳</option>
+            <option value="chengdu">成都</option>
+        </select>
+    </label>
+    <br><br>
+
+    <h2>复选框 / 单选框</h2>
+    <label><input type="checkbox" id="remember"> 记住我</label>
+    <br><br>
+    <label><input type="radio" name="gender" value="male"> 男</label>
+    <label><input type="radio" name="gender" value="female"> 女</label>
+    <br><br>
+
+    <h2>文件上传</h2>
+    <label>上传头像：<input type="file" id="avatar"></label>
+    <br><br>
+
+    <h2>悬停测试</h2>
+    <span id="hoverMe" style="padding:10px;background:#e0e0e0;cursor:pointer;">悬停查看提示</span>
+    <span id="tooltip" style="display:none;color:blue;">← 这是提示信息</span>
+
+    <script>
+        document.getElementById('loginForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            var user = document.getElementById('username').value;
+            var pass = document.getElementById('password').value;
+            var result = document.getElementById('result');
+
+            if (user === 'admin' && pass === '123456') {
+                result.innerHTML = '<p class="success">✅ 登录成功！欢迎 ' + user + '</p>';
+            } else {
+                result.innerHTML = '<p style="color:red">❌ 登录失败，用户名或密码错误</p>';
+            }
+        });
+
+        document.getElementById('clickMe').addEventListener('click', function() {
+            alert('你点击了按钮！');
+        });
+
+        // 悬停显示提示
+        var hoverEl = document.getElementById('hoverMe');
+        var tooltip = document.getElementById('tooltip');
+        hoverEl.addEventListener('mouseenter', function() {
+            tooltip.style.display = 'inline';
+        });
+        hoverEl.addEventListener('mouseleave', function() {
+            tooltip.style.display = 'none';
+        });
+    </script>
+</body>
+</html>
